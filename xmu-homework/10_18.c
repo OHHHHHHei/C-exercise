@@ -20,17 +20,17 @@ int main(void)
                 count++;//如果没被淘汰，计数加一
             }
 
-
-
             if (count == 3) {//如果是3的倍数，则这个位置的人被淘汰
                 person[i] = 1;
                 taotai = 1;
                 count = 0;
+                
                 for (int j = 0; j < n; j++) {//淘汰完一个人之后立马检查存活人数
                     if (person[j] == 0) {
                         exist++;
                     }
                 }
+
                 if (exist == 1) {//如果只剩一个人，就打印出他原来的编号
                     for (int j = 0; j < n; j++) {
                         if (person[j] == 0) {
@@ -41,8 +41,9 @@ int main(void)
                     }
             }
 
+            // 处理环形结构：如果遍历完所有人都没有淘汰任何人，则重新从头开始
             if (taotai == 0 && i == n - 1) {
-                i = -1;
+                i = -1;// 将i设为-1，因为for循环的i++会使其变成0，从而重新从头开始遍历
             }
         }
     
