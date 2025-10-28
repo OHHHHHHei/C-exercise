@@ -1,27 +1,28 @@
 #include <stdio.h>
+#include <math.h>
 
-int main() {
-    int input, output = 0;
-    scanf("%d", &input);
-    if (input > 10) 
-        if (input > 100) 
-            output = 3;
-    else if (input > 5) 
-        output = 2;
-    else 
-        output = 1;
-    printf("%d", output);
-    return 0;
-}
-
-
-
-
-
-char code(char *x, int k)
+int main(void)
 {
-  *x = *x + k;
-  if ( (*x>'Z' && *x<'Z'+k) || *x > 'z')
-    *x = *x-26;
-  return *x;
+  int n;
+  scanf("%i", &n);
+
+  int A[n];
+  for (int i = 0; i < n; i++)
+  {
+    scanf("%i", &A[i]);
+  }
+  
+  int sum = 0;
+  for (int i = 0; i < n; i++)
+  {
+    sum += A[i];
+  }
+  float Avg = (float)sum / n;
+  double sum_final = 0;
+  for (int i = 0; i < n; i++)
+  {
+    sum_final += pow(A[i] - Avg, 2);
+  }
+  printf("%.5f", sqrt(sum_final / n));
+  return 0;
 }
